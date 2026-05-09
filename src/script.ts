@@ -10,7 +10,7 @@ let currentIndex = 0;
 
 const audio = new Audio();
 
-const API = "http://localhost:3000/api/auth";
+const API = "https://achilymusic.onrender.com";
 
 const token = localStorage.getItem("token");
 
