@@ -10,7 +10,7 @@ let currentIndex = 0;
 
 const audio = new Audio();
 
-const API = "https://achilymusic.onrender.com";
+const API = "https://achilymusic.onrender.com/api";
 
 const token = localStorage.getItem("token");
 
@@ -48,7 +48,7 @@ async function registerUser(){
   const email = (document.getElementById("email") as HTMLInputElement).value;
   const password = (document.getElementById("password") as HTMLInputElement).value;
 
-  const res = await fetch(`${API}/api/auth/register`,{
+  const res = await fetch(`${API}/auth/register`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json"
@@ -71,7 +71,7 @@ async function loginUser(){
   const email = (document.getElementById("email") as HTMLInputElement).value;
   const password = (document.getElementById("password") as HTMLInputElement).value;
 
-  const res = await fetch(`${API}/api/auth/login`,{
+  const res = await fetch(`${API}/auth/login`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json"
@@ -200,7 +200,7 @@ async function playSongFunc(index:number){
 
   renderSongs();
 
-  await fetch(`${API}/api/auth/recent`,{
+  await fetch(`${API}/auth/recent`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json",
@@ -278,7 +278,7 @@ volume.addEventListener("input",()=>{
 
 async function addFavorite(index:number){
 
-  const res = await fetch(`${API}/api/auth/favorite`,{
+  const res = await fetch(`${API}/favorite/add`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json",
@@ -297,7 +297,7 @@ async function addFavorite(index:number){
 
 async function removeFavorite(previewUrl:string){
 
-  const res = await fetch(`${API}/favorite`,{
+  const res = await fetch(`${API}/favorite/delete`,{
     method:"DELETE",
     headers:{
       "Content-Type":"application/json",
@@ -318,7 +318,7 @@ async function removeFavorite(previewUrl:string){
 
 async function showFavorites(){
 
-  const res = await fetch(`${API}/api/auth/favorites`,{
+  const res = await fetch(`${API}/favorites`,{
     headers:{
       "Authorization":localStorage.getItem("token") || ""
     }
@@ -371,7 +371,7 @@ async function showFavorites(){
 
 async function showRecent(){
 
-  const res = await fetch(`${API}/recent`,{
+  const res = await fetch(`${API}/music/recent`,{
     headers:{
       "Authorization":localStorage.getItem("token") || ""
     }
