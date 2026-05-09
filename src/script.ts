@@ -48,7 +48,7 @@ async function registerUser(){
   const email = (document.getElementById("email") as HTMLInputElement).value;
   const password = (document.getElementById("password") as HTMLInputElement).value;
 
-  const res = await fetch(`${API}/register`,{
+  const res = await fetch(`${API}/api/auth/register`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json"
@@ -71,7 +71,7 @@ async function loginUser(){
   const email = (document.getElementById("email") as HTMLInputElement).value;
   const password = (document.getElementById("password") as HTMLInputElement).value;
 
-  const res = await fetch(`${API}/login`,{
+  const res = await fetch(`${API}/api/auth/login`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json"
@@ -200,7 +200,7 @@ async function playSongFunc(index:number){
 
   renderSongs();
 
-  await fetch(`${API}/recent`,{
+  await fetch(`${API}/api/auth/recent`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json",
@@ -278,7 +278,7 @@ volume.addEventListener("input",()=>{
 
 async function addFavorite(index:number){
 
-  const res = await fetch(`${API}/favorite`,{
+  const res = await fetch(`${API}/api/auth/favorite`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json",
@@ -318,7 +318,7 @@ async function removeFavorite(previewUrl:string){
 
 async function showFavorites(){
 
-  const res = await fetch(`${API}/favorites`,{
+  const res = await fetch(`${API}/api/auth/favorites`,{
     headers:{
       "Authorization":localStorage.getItem("token") || ""
     }
