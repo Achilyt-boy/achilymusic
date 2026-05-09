@@ -10,7 +10,7 @@ let currentIndex = 0;
 
 const audio = new Audio();
 
-const API = "https://achilymusic.onrender.com/api";
+const API = "https://achilymusic.onrender.com";
 
 const token = localStorage.getItem("token");
 
@@ -48,7 +48,7 @@ async function registerUser(){
   const email = (document.getElementById("email") as HTMLInputElement).value;
   const password = (document.getElementById("password") as HTMLInputElement).value;
 
-  const res = await fetch(`${API}/auth/register`,{
+  const res = await fetch(`${API}/register`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json"
@@ -71,7 +71,7 @@ async function loginUser(){
   const email = (document.getElementById("email") as HTMLInputElement).value;
   const password = (document.getElementById("password") as HTMLInputElement).value;
 
-  const res = await fetch(`${API}/auth/login`,{
+  const res = await fetch(`${API}/login`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json"
@@ -200,7 +200,7 @@ async function playSongFunc(index:number){
 
   renderSongs();
 
-  await fetch(`${API}/auth/recent`,{
+  await fetch(`${API}/recent`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json",
@@ -278,7 +278,7 @@ volume.addEventListener("input",()=>{
 
 async function addFavorite(index:number){
 
-  const res = await fetch(`${API}/favorite/add`,{
+  const res = await fetch(`${API}/favorite`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json",
@@ -297,7 +297,7 @@ async function addFavorite(index:number){
 
 async function removeFavorite(previewUrl:string){
 
-  const res = await fetch(`${API}/favorite/delete`,{
+  const res = await fetch(`${API}/favorite`,{
     method:"DELETE",
     headers:{
       "Content-Type":"application/json",
@@ -371,7 +371,7 @@ async function showFavorites(){
 
 async function showRecent(){
 
-  const res = await fetch(`${API}/music/recent`,{
+  const res = await fetch(`${API}/recent`,{
     headers:{
       "Authorization":localStorage.getItem("token") || ""
     }
