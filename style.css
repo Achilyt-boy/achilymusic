@@ -97,7 +97,6 @@ body{
   gap:10px;
   padding:0 20px 20px;
   flex-wrap:wrap;
-  background-color: #282828;
 }
 
 .search-bar input{
@@ -106,6 +105,7 @@ body{
   border:none;
   border-radius:10px;
   color :white;
+  background-color: #282828;
 }
 
 .search-bar button{
