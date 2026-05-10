@@ -6,12 +6,288 @@
 }
 
 body{
+  background:#121212;
+  color:white;
+}
+
+
+.auth-container{
+  height:100vh;
+  display:flex;
+}
+
+.left-panel{
+  width:40%;
+  background:#1c1c1c;
+  padding:60px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.right-panel{
+  width:60%;
+  background:url("login-image.jpg") no-repeat center center;
+  background-size:cover;
+  filter:grayscale(100%);
+}
+
+.brand{
+  font-size:26px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.title{
+  color:orange;
+  margin-bottom:25px;
+  font-size:18px;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+label{
+  font-size:14px;
+  color:#b3b3b3;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin-top:5px;
+  border:none;
+  border-radius:8px;
+  background:#282828;
+  color:white;
+}
+
+.btn-row{
+  display:flex;
+  gap:10px;
+  margin-top:15px;
+}
+
+.login-btn,
+.register-btn{
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.login-btn{
+  background:#555;
+  color:white;
+}
+
+.register-btn{
+  background:#1db954;
+  color:white;
+}
+
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:bold;
+}
+
+.nav-buttons{
+  display:flex;
+  gap:10px;
+}
+
+.nav-buttons button,
+.logout-btn{
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  background:#1db954;
+  color:white;
+  cursor:pointer;
+}
+
+
+.search-bar{
+  display:flex;
+  gap:10px;
+  padding:0 20px 20px;
+  flex-wrap:wrap;
+}
+
+.search-bar input{
+  flex:1;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  background:#282828;
+  color:white;
+}
+
+.search-bar button{
+  padding:14px 18px;
+  border:none;
+  border-radius:10px;
+  background:#1db954;
+  color:white;
+  cursor:pointer;
+}
+
+
+.songs-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+.song-card{
+  background:#181818;
+  padding:15px;
+  border-radius:20px;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.song-card:hover{
+  background:#282828;
+  transform:scale(1.03);
+}
+
+.song-card.active{
+  border:2px solid #1db954;
+}
+
+.song-card img{
+  width:100%;
+  border-radius:15px;
+}
+
+.song-card h3{
+  margin-top:10px;
+  font-size:18px;
+}
+
+.song-card p{
+  color:#b3b3b3;
+}
+
+.song-card button{
+  margin-top:10px;
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:#1db954;
+  color:white;
+  cursor:pointer;
+}
+
+
+.player{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#181818;
+  padding:15px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  border-top:1px solid #333;
+}
+
+.player img{
+  width:60px;
+  height:60px;
+  border-radius:10px;
+}
+
+.player-info{
+  flex:1;
+}
+
+.controls{
+  display:flex;
+  gap:10px;
+}
+
+.controls button{
+  padding:12px;
+  border:none;
+  border-radius:50%;
+  background:#1db954;
+  color:white;
+  cursor:pointer;
+}
+
+#progress{
+  width:200px;
+}
+
+#volume{
+  width:100px;
+}
+
+
+.empty-message{
+  text-align:center;
+  padding:40px;
+  color:#b3b3b3;
+}
+
+
+@media(max-width:768px){
+
+  .auth-container{
+    flex-direction:column;
+  }
+
+  .left-panel,
+  .right-panel{
+    width:100%;
+    height:50vh;
+  }
+
+  .player{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  #progress,
+  #volume{
+    width:100%;
+  }
+}
+
+
+/*
+IF I WANT GLASSMORPHISM EFFECT:
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+}
+
+body{
   background: radial-gradient(circle at top, #1db95433, #121212);
   color:white;
   overflow-x:hidden;
 }
 
-/* AUTH GLASS UI */
+
 .auth-container{
   height:100vh;
   display:flex;
@@ -117,7 +393,7 @@ input:focus{
   transform:scale(1.05);
 }
 
-/* TOPBAR GLASS */
+
 .topbar{
   display:flex;
   justify-content:space-between;
@@ -154,7 +430,7 @@ input:focus{
   background:#1db954;
 }
 
-/* SEARCH GLASS */
+
 .search-bar{
   display:flex;
   gap:10px;
@@ -181,7 +457,7 @@ input:focus{
   cursor:pointer;
 }
 
-/* SONGS GLASS CARDS */
+
 .songs-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -233,7 +509,7 @@ input:focus{
   cursor:pointer;
 }
 
-/* PLAYER GLASS DOCK */
+
 .player{
   position:fixed;
   bottom:15px;
@@ -284,7 +560,7 @@ input:focus{
   width:100px;
 }
 
-/* MOBILE */
+
 @media(max-width:768px){
 
   .auth-container{
@@ -310,3 +586,4 @@ input:focus{
     width:100%;
   }
 }
+*/
