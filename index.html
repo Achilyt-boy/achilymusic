@@ -7,135 +7,93 @@
 
   <title>Spotify PRO</title>
 
-  
   <link rel="stylesheet" href="style.css"/>
   <link rel="manifest" href="/manifest.json"/>
-<link rel="icon" type="image/png" href="/logo.png"/>
+  <link rel="icon" type="image/png" href="/logo.png"/>
+  <meta name="theme-color" content="#1DB954"/>
 
-<meta name="theme-color" content="#1DB954"/>
 </head>
-
 
 <body>
 
-  
   <div id="authContainer" class="auth-container">
 
-    <div class="auth-box">
+    <div class="left-panel">
 
-      <h1>🎵 Spotify PRO</h1>
+      <div class="brand">🎵 Spotify PRO</div>
+      <div class="title">Login / Register</div>
 
-      <p>Stream music everywhere 🔥</p>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="name" placeholder="Enter your name"/>
+      </div>
 
-      <input type="text" id="name" placeholder="Name"/>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter your email"/>
+      </div>
 
-      <input type="email" id="email" placeholder="Email"/>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter your password"/>
+      </div>
 
-      <input type="password" id="password" placeholder="Password"/>
-
-      <div class="auth-buttons">
-
-        <button onclick="register()">
-          Register
-        </button>
-
-        <button onclick="login()">
-          Login
-        </button>
-
+      <div class="btn-row">
+        <button class="register-btn" onclick="register()">Register</button>
+        <button class="login-btn" onclick="login()">Login</button>
       </div>
 
     </div>
+
+    <div class="right-panel"></div>
 
   </div>
 
-  
   <div id="app" style="display:none;">
 
-   
     <header class="topbar">
 
-      <div class="logo">
-        🎵 Spotify PRO
-      </div>
+      <div class="logo">🎵 Spotify PRO</div>
 
       <div class="nav-buttons">
-
         <button onclick="goBack()">back</button>
-
         <button onclick="goHome()">Home</button>
-
       </div>
 
-      <button class="logout-btn" onclick="logout()">
-        Logout
-      </button>
+      <button class="logout-btn" onclick="logout()">Logout</button>
 
     </header>
 
-    
     <div class="search-bar">
 
-      <input
-      type="text"
-      id="searchInput"
-      placeholder="Search songs..."
-      />
+      <input type="text" id="searchInput" placeholder="Search songs..."/>
 
-      <button onclick="searchSongs()">
-        Search
-      </button>
-
-      <button onclick="showFavorites()">
-        ❤️ Favorites
-      </button>
-
-      <button onclick="showRecent()">
-        🕒 Recent
-      </button>
+      <button onclick="searchSongs()">Search</button>
+      <button onclick="showFavorites()">❤️ Favorites</button>
+      <button onclick="showRecent()">🕒 Recent</button>
 
     </div>
 
-    
     <div id="songsContainer" class="songs-grid"></div>
 
-    
     <div class="player">
 
       <img id="playerImg"/>
 
       <div class="player-info">
-
-        <h3 id="playerTitle">
-          No song playing
-        </h3>
-
+        <h3 id="playerTitle">No song playing</h3>
         <p id="playerArtist"></p>
-
       </div>
 
       <div class="controls">
-
         <button onclick="prevSong()">⏮</button>
-
-        <button id="playBtn" onclick="togglePlay()">
-          ▶
-        </button>
-
+        <button id="playBtn" onclick="togglePlay()">▶</button>
         <button onclick="nextSong()">⏭</button>
-
       </div>
 
       <input type="range" id="progress" value="0"/>
 
-      <input
-      type="range"
-      id="volume"
-      min="0"
-      max="1"
-      step="0.1"
-      value="1"
-      />
+      <input type="range" id="volume" min="0" max="1" step="0.1" value="1"/>
 
     </div>
 
@@ -144,13 +102,10 @@
   <script src="dist/script.js"></script>
 
   <script>
-
-if("serviceWorker" in navigator){
-
-  navigator.serviceWorker.register("/sw.js");
-}
-
-</script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js");
+    }
+  </script>
 
 </body>
 </html>
