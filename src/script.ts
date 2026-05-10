@@ -5,12 +5,13 @@ interface Song{
   previewUrl:string;
 }
 
+let historyStack:string[] = [];
 let songs:Song[] = [];
 let currentIndex = 0;
 
 const audio = new Audio();
 
-const API = "https://achilymusic.onrender.com";
+const API = "https://achilymusic.onrender.com/api/auth";
 
 const token = localStorage.getItem("token");
 
@@ -41,6 +42,32 @@ function checkAuth(){
 
 checkAuth();
 
+
+function goBack(){
+
+  historyStack.pop();
+
+  const last =
+    historyStack[historyStack.length - 1];
+
+  if(last === "favorites"){
+
+    showFavorites();
+
+  }else if(last === "recent"){
+
+    showRecent();
+
+  }else{
+
+    loadDefaultSongs();
+  }
+}
+
+function goHome(){
+
+  loadDefaultSongs();
+}
 
 async function registerUser(){
 
@@ -122,6 +149,8 @@ async function loadDefaultSongs(){
 
 
 async function searchSongsFunc(){
+
+  historyStack.push("search");
 
   const query =
     (document.getElementById("searchInput") as HTMLInputElement).value;
@@ -318,6 +347,8 @@ async function removeFavorite(previewUrl:string){
 
 async function showFavorites(){
 
+  historyStack.push("favorites");
+
   const res = await fetch(`${API}/favorites`,{
     headers:{
       "Authorization":localStorage.getItem("token") || ""
@@ -371,6 +402,8 @@ async function showFavorites(){
 
 async function showRecent(){
 
+  historyStack.push("recent");
+
   const res = await fetch(`${API}/recent`,{
     headers:{
       "Authorization":localStorage.getItem("token") || ""
@@ -402,3 +435,5 @@ async function showRecent(){
 (window as any).removeFavorite = removeFavorite;
 
 (window as any).showRecent = showRecent;
+(window as any).goBack = goBack;
+(window as any).goHome = goHome;

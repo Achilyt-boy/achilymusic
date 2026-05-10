@@ -8,10 +8,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+let historyStack = [];
 let songs = [];
 let currentIndex = 0;
 const audio = new Audio();
-const API = "https://achilymusic.onrender.com";
+const API = "https://achilymusic.onrender.com/api/auth";
 const token = localStorage.getItem("token");
 const authContainer = document.getElementById("authContainer");
 const app = document.getElementById("app");
@@ -30,6 +31,22 @@ function checkAuth() {
     }
 }
 checkAuth();
+function goBack() {
+    historyStack.pop();
+    const last = historyStack[historyStack.length - 1];
+    if (last === "favorites") {
+        showFavorites();
+    }
+    else if (last === "recent") {
+        showRecent();
+    }
+    else {
+        loadDefaultSongs();
+    }
+}
+function goHome() {
+    loadDefaultSongs();
+}
 function registerUser() {
     return __awaiter(this, void 0, void 0, function* () {
         const name = document.getElementById("name").value;
@@ -90,6 +107,7 @@ function loadDefaultSongs() {
 }
 function searchSongsFunc() {
     return __awaiter(this, void 0, void 0, function* () {
+        historyStack.push("search");
         const query = document.getElementById("searchInput").value;
         const res = yield fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=20`);
         const data = yield res.json();
@@ -228,6 +246,7 @@ function removeFavorite(previewUrl) {
 }
 function showFavorites() {
     return __awaiter(this, void 0, void 0, function* () {
+        historyStack.push("favorites");
         const res = yield fetch(`${API}/favorites`, {
             headers: {
                 "Authorization": localStorage.getItem("token") || ""
@@ -272,6 +291,7 @@ function showFavorites() {
 }
 function showRecent() {
     return __awaiter(this, void 0, void 0, function* () {
+        historyStack.push("recent");
         const res = yield fetch(`${API}/recent`, {
             headers: {
                 "Authorization": localStorage.getItem("token") || ""
@@ -294,4 +314,6 @@ window.addFavorite = addFavorite;
 window.showFavorites = showFavorites;
 window.removeFavorite = removeFavorite;
 window.showRecent = showRecent;
+window.goBack = goBack;
+window.goHome = goHome;
 //# sourceMappingURL=script.js.map

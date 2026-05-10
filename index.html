@@ -1,121 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>Spotify PRO</title>
+
   <link rel="manifest" href="manifest.json"/>
   <link rel="stylesheet" href="style.css"/>
+
 </head>
+
 <body>
 
-
-<div id="authContainer" class="auth-container">
-
-  <div class="auth-box">
-
-    <h1>🎵 Spotify PRO</h1>
-
-    <input type="text" id="name" placeholder="Name"/>
-    <input type="email" id="email" placeholder="Email"/>
-    <input type="password" id="password" placeholder="Password"/>
-
-    <button onclick="register()">Register</button>
-    <button onclick="login()">Login</button>
-
-  </div>
-
-</div>
-
-
-<div id="app" style="display:none;">
-
   
-  <header>
+  <div id="authContainer" class="auth-container">
 
-    <div class="logo">🎵 Spotify PRO</div>
+    <div class="auth-box">
 
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search songs..."/>
-      <button onclick="searchSongs()">Search</button>
-    </div>
+      <h1>🎵 Spotify PRO</h1>
 
-    <div class="header-right">
+      <p>Stream music everywhere 🔥</p>
 
-      <button onclick="openProfile()">👤 Profile</button>
+      <input type="text" id="name" placeholder="Name"/>
 
-      <button onclick="showFavorites()">❤️ Favorites</button>
+      <input type="email" id="email" placeholder="Email"/>
 
-      <button onclick="showRecent()">🕒 Recent</button>
+      <input type="password" id="password" placeholder="Password"/>
 
-      <button class="logout-btn" onclick="logout()">Logout</button>
+      <div class="auth-buttons">
 
-    </div>
+        <button onclick="register()">
+          Register
+        </button>
 
-  </header>
+        <button onclick="login()">
+          Login
+        </button>
 
-  <div id="profileModal" class="modal">
-
-    <div class="modal-content">
-
-      <h2>User Profile</h2>
-
-      <input type="text" id="profileName"/>
-      <input type="email" id="profileEmail"/>
-      <input type="password" id="profilePassword" placeholder="New Password"/>
-
-      <button onclick="saveProfile()">Save Changes</button>
-
-      <button onclick="closeProfile()">Close</button>
+      </div>
 
     </div>
 
   </div>
 
   
+  <div id="app" style="display:none;">
 
-  
-  <div id="songsContainer" class="songs-container"></div>
+   
+    <header class="topbar">
 
-  
-  <div class="player-bar">
+      <div class="logo">
+        🎵 Spotify PRO
+      </div>
 
-    <img id="playerImg" src=""/>
+      <div class="nav-buttons">
 
-    <div class="player-info">
-      <h3 id="playerTitle">No song playing</h3>
-      <p id="playerArtist">---</p>
-    </div>
+        <button onclick="goBack()">⬅</button>
 
-    <div class="controls">
-      <button onclick="prevSong()">⏮</button>
-      <button id="playBtn" onclick="togglePlay()">▶</button>
-      <button onclick="nextSong()">⏭</button>
-    </div>
+        <button onclick="goHome()">🏠</button>
 
-    <input type="range" id="progress" value="0"/>
+      </div>
+
+      <button class="logout-btn" onclick="logout()">
+        Logout
+      </button>
+
+    </header>
 
     
-    <div class="volume-box">
-
-      🔊
+    <div class="search-bar">
 
       <input
-        type="range"
-        id="volume"
-        min="0"
-        max="1"
-        step="0.1"
-        value="1"
+      type="text"
+      id="searchInput"
+      placeholder="Search songs..."
+      />
+
+      <button onclick="searchSongs()">
+        Search
+      </button>
+
+      <button onclick="showFavorites()">
+        ❤️ Favorites
+      </button>
+
+      <button onclick="showRecent()">
+        🕒 Recent
+      </button>
+
+    </div>
+
+    
+    <div id="songsContainer" class="songs-grid"></div>
+
+    
+    <div class="player">
+
+      <img id="playerImg"/>
+
+      <div class="player-info">
+
+        <h3 id="playerTitle">
+          No song playing
+        </h3>
+
+        <p id="playerArtist"></p>
+
+      </div>
+
+      <div class="controls">
+
+        <button onclick="prevSong()">⏮</button>
+
+        <button id="playBtn" onclick="togglePlay()">
+          ▶
+        </button>
+
+        <button onclick="nextSong()">⏭</button>
+
+      </div>
+
+      <input type="range" id="progress" value="0"/>
+
+      <input
+      type="range"
+      id="volume"
+      min="0"
+      max="1"
+      step="0.1"
+      value="1"
       />
 
     </div>
 
   </div>
 
-</div>
-
-<script src="dist/script.js"></script>
+  <script src="dist/script.js"></script>
 
 </body>
 </html>
