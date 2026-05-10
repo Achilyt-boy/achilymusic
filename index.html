@@ -7,11 +7,14 @@
 
   <title>Spotify PRO</title>
 
-  <link rel="manifest" href="manifest.json"/>
+  
   <link rel="stylesheet" href="style.css"/>
-  <link rel="icon" type="image/png" href="logo.png"/>
+  <link rel="manifest" href="/manifest.json"/>
+<link rel="icon" type="image/png" href="/logo.png"/>
 
+<meta name="theme-color" content="#1DB954"/>
 </head>
+
 
 <body>
 
@@ -139,6 +142,15 @@
   </div>
 
   <script src="dist/script.js"></script>
+
+  <script>
+
+if("serviceWorker" in navigator){
+
+  navigator.serviceWorker.register("/sw.js");
+}
+
+</script>
 
 </body>
 </html>

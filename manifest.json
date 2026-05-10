@@ -1,14 +1,14 @@
 {
   "name":"Spotify PRO",
   "short_name":"SpotifyPRO",
-  "start_url":"./index.html",
+  "start_url":"/",
   "display":"standalone",
   "background_color":"#121212",
   "theme_color":"#1DB954",
   "icons":[
     {
-      "src":"https://cdn-icons-png.flaticon.com/512/174/174872.png",
-      "sizes":"192x192",
+      "src":"/logo.png",
+      "sizes":"512x512",
       "type":"image/png"
     }
   ]
