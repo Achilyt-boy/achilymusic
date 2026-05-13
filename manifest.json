@@ -1,13 +1,13 @@
 {
-  "name":"Spotify PRO",
-  "short_name":"SpotifyPRO",
+  "name":"Aura Flow",
+  "short_name":"AuraFlow",
   "start_url":"/",
   "display":"standalone",
   "background_color":"#121212",
   "theme_color":"#1DB954",
   "icons":[
     {
-      "src":"/logo.png",
+      "src":"/logo3.png",
       "sizes":"424x337",
       "type":"image/png"
     }
